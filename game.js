@@ -42,5 +42,15 @@ scene('jogo', () =>{ //Criação do cenário do jogo
         height:20,
 
         '=':[sprite('tijolo'), solid()],
+
     }
+
+    const gameLevel = addLevel(mapa, confNivel)
+
+    const jogador = add([
+        sprite('mario'), solid(),
+        pos(30, 0),
+        body(),
+        origin('bot')
+    ])
 })
