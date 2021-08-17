@@ -18,22 +18,23 @@ loadSprite('cx-aberta', 'Fr6EVAz.png')
 loadSprite('tubo-sup-esq', 'uUrDHoB.png')
 loadSprite('tubo-sup-dir', 'uQWT3XA.png')
 loadSprite('tubo-inf-esq', 'ibdF5O6.png')
+loadSprite('tubo-inf-dir', 'C9lIpCL.png')
 
 scene("jogo", () =>{ //Criação do cenário do jogo
     layers(['bg', 'obj', 'ui', 'obs'])
 
     const mapa=[ 
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '                                       ',
-        '=================================  ====',
+        '                                        ',
+        '                                        ',
+        '                                        ',
+        '                *                       ',
+        '                                        ',
+        '                =                       ',
+        '                    = =                 ',
+        '                 ==                     ',
+        '            ===                      -+ ',
+        '               ^       ^             () ',
+        '=================================  =====',
     ]
 
     const confNivel = {
