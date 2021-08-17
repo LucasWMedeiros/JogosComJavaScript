@@ -43,8 +43,8 @@ scene("jogo", () =>{ //Criação do cenário do jogo
 
         '=':[sprite('bloco'), solid()],
         '$':[sprite('moeda')],
-        '%':[sprite('surpresa', solid(), 'moeda-surpresa')],
-        '*':[sprite('surpresa', solid(), 'cogumelo-surpresa')],
+        '%':[sprite('surpresa'),solid(),'moeda-surpresa'],
+        '*':[sprite('surpresa'),solid(),'cogumelo-surpresa'],
         '}':[sprite('cx-aberta'),solid()],
         '(':[sprite('tubo-inf-esq'),solid(), scale(0.5)],
         ')':[sprite('tubo-inf-dir'),solid(), scale(0.5)],
@@ -90,6 +90,47 @@ scene("jogo", () =>{ //Criação do cenário do jogo
     ])
 
     add([text('Nível ' + 'test',pos(4, 6))])
+    
+    function big(){
+        let timer=0
+        let isBig = false
+        return{
+            update(){
+                if(isBig){
+                    timer -=dt()
+                    if(timer <= 0){
+                        this.smallify()
+                    }
+                }
+            },
+            isBig(){
+                return isBig
+            },
+            smallify(){
+                this.scale = vec2(1)
+                timer = 0
+                isBig = false
+            }
+        }
+    }
+
+    jogador.on("headbump", (obj)=>{
+        if(obj.is('moeda-surpresa')){
+            gameLevel.spawn('#', obj.gripPos.sub(0,1))
+            destroy(obj)
+            gameLevel.spaw('}', obj.gripPos.sub(0,0))
+        }
+        if(obj.is('cogumelo-surpresa')){
+            gameLevel.spawn('#', obj.gripPos.sub(0,1))
+            destroy(obj)
+            gameLevel.spaw('}', obj.gripPos.sub(0,0))
+        }
+    })
+    action('cogumelo',(c)=>{
+        c.move(20,0)
+    })
+    
 })
+
 
 start("jogo")
