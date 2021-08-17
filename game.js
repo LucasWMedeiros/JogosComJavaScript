@@ -28,10 +28,10 @@ scene("jogo", () =>{ //Criação do cenário do jogo
         '                                        ',
         '                *                       ',
         '                                        ',
-        '                                        ',
+        '            =                           ',
         '                =                       ',
+        '         ==                             ',
         '                                        ',
-        '                 ==                     ',
         '            ===                      -+ ',
         '               ^       ^             () ',
         '=================================  =====',
@@ -64,7 +64,7 @@ scene("jogo", () =>{ //Criação do cenário do jogo
     ])
 
     const vel_mov = 120
-    const pul_for = 200
+    const pul_for = 300
     keyDown('left',()=>{
         jogador.move(-vel_mov, 0)
     })
@@ -72,18 +72,21 @@ scene("jogo", () =>{ //Criação do cenário do jogo
         jogador.move(vel_mov,0)
     })
     keyDown('space',()=>{
-        jogador.jump(pul_for, 0)
+        if(jogador.grounded()){
+            jogador.jump(pul_for)
+        }        
     })
+
 
     const pontuacao = add([
         text('pontos'),
         pos(40, 6),
-        layers('ui'),
-        /*
+        layer('ui'),
+        
         {
             value:'pontos',
         }
-        */
+        
     ])
 
     add([text('Nível ' + 'test',pos(4, 6))])
