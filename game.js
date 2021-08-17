@@ -16,6 +16,8 @@ let noPulo = true
 
 const morte_cair = 400
 
+const vel_inimigo = 20
+
 loadRoot('https://i.imgur.com/')
 loadSprite('mario', 'Wb1qfhK.png')
 loadSprite('moeda', 'wbKxhcd.png')
@@ -60,7 +62,7 @@ scene("jogo", () => { //Criação do cenário do jogo
         ')': [sprite('tubo-inf-dir'), solid(), scale(0.5)],
         '-': [sprite('tubo-sup-esq'), solid(), scale(0.5)],
         '+': [sprite('tubo-sup-dir'), solid(), scale(0.5)],
-        '^': [sprite('koopa'), solid()],
+        '^': [sprite('koopa'), solid(), 'perigo'],
         '#': [sprite('cogumelo'), solid()],
     }
 
@@ -148,7 +150,7 @@ scene("jogo", () => { //Criação do cenário do jogo
     })
 
     jogador.collides('cogumelo', (c) => {
-        destriy(c)
+        destroy(c)
         jogador.bigify10(10)
     })
 
@@ -159,9 +161,32 @@ scene("jogo", () => { //Criação do cenário do jogo
     })
 
     jogador.collides('perigo', (p) => {
+        if(noPulo){
+            destroy(p)
+        } else {
+            go('perdeu!', {pontuacao:pontuacaoLabel.value})
+        }
+    })
 
+    jogador.action(()=>{
+        if(jogador.grounded){
+            noPulo = false
+        }
+    })
+
+    jogador.action(()=>{
+        camPos(jogador.pos)
+        if(jogador.pos.y>=morte_cair){
+        go('perdeu!', {pontuacao:pontuacaoLabel.value})}
+    })
+
+    action('perigo', (p)=>{
+        p.move(-vel_inimigo, 0)
     })
 })
 
+scene('perdeu', ({pontuacao})=>
+add([text(pontuacao,32), origin('center'), pos(width()/2, height()/2)]))
 
-start("jogo")
+
+start("jogo", {pontuacao:0})
