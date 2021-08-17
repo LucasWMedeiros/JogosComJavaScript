@@ -1,7 +1,7 @@
 kaboom({
     global:true,
     fullscreen:true,
-    scale:1,
+    scale:2,
     debug:true,
     clearColor:[0,0,0,1],
 })
@@ -9,8 +9,8 @@ kaboom({
 loadRoot('https://i.imgur.com/')
 loadSprite('mario', 'UVsBVZo.png[/img]')
 loadSprite('moeda', 'exZftYI.png[/img]')
-loadSprite('tijolo', 'zohWy76.png')
-loadSprite('bloco', 'NKxLQxg.png')
+loadSprite('tijolo', 'NKxLQxg.png')
+loadSprite('bloco', 'zohWy76.png')
 loadSprite('cogumelo', '0nlMLey.png')
 loadSprite('koopa', 'zFIUVT7.png')
 loadSprite('suspresa', 'mxvgMnf.png')
@@ -34,15 +34,24 @@ scene("jogo", () =>{ //Criação do cenário do jogo
         '                                       ',
         '                                       ',
         '                                       ',
-        '=======================================',
+        '=================================  ====',
     ]
 
     const confNivel = {
         width:20,
         height:20,
 
-        '=':[sprite('tijolo'), solid()],
-        
+        '=':[sprite('bloco'), solid()],
+        '$':[sprite('moeda')],
+        '%':[sprite('surpresa', solid(), 'moeda-surpresa')],
+        '*':[sprite('surpresa', solid(), 'cogumelo-surpresa')],
+        '}':[sprite('cx-aberta'),solid()],
+        '(':[sprite('tubo-inf-esq'),solid(), scale(0.5)],
+        ')':[sprite('tubo-inf-dir'),solid(), scale(0.5)],
+        '-':[sprite('tubo-sup-esq'),solid(), scale(0.5)],
+        '+':[sprite('tubo-sup-dir'),solid(), scale(0.5)],
+        '^':[sprite('cogumelo-mau'),solid()],
+        '#':[sprite('cogumelo'),solid()],
     }
 
     const gameLevel = addLevel(mapa, confNivel)
