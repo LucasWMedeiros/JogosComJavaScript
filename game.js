@@ -20,7 +20,7 @@ loadSprite('tudo-sup-dir', 'uQWT3XA.png')
 loadSprite('tudo-inf-esq', 'ibdF5O6.png')
 loadSprite('tudo-inf-dir', 'C9lIpCL.png')
 
-scene('jogo', () =>{ //Criação do cenário do jogo
+scene("jogo", () =>{ //Criação do cenário do jogo
     layers(['bg', 'obj', 'ui', 'obs'])
 
     const mapa=[ 
@@ -42,7 +42,7 @@ scene('jogo', () =>{ //Criação do cenário do jogo
         height:20,
 
         '=':[sprite('tijolo'), solid()],
-
+        
     }
 
     const gameLevel = addLevel(mapa, confNivel)
@@ -54,3 +54,5 @@ scene('jogo', () =>{ //Criação do cenário do jogo
         origin('bot')
     ])
 })
+
+start("jogo")
