@@ -13,12 +13,11 @@ loadSprite('tijolo', 'NKxLQxg.png')
 loadSprite('bloco', 'zohWy76.png')
 loadSprite('cogumelo', '0nlMLey.png')
 loadSprite('koopa', 'zFIUVT7.png')
-loadSprite('suspresa', 'mxvgMnf.png')
+loadSprite('surpresa', 'mxvgMnf.png')
 loadSprite('cx-aberta', 'Fr6EVAz.png')
-loadSprite('tudo-sup-esq', 'uUrDHoB.png')
-loadSprite('tudo-sup-dir', 'uQWT3XA.png')
-loadSprite('tudo-inf-esq', 'ibdF5O6.png')
-loadSprite('tudo-inf-dir', 'C9lIpCL.png')
+loadSprite('tubo-sup-esq', 'uUrDHoB.png')
+loadSprite('tubo-sup-dir', 'uQWT3XA.png')
+loadSprite('tubo-inf-esq', 'ibdF5O6.png')
 
 scene("jogo", () =>{ //Criação do cenário do jogo
     layers(['bg', 'obj', 'ui', 'obs'])
@@ -50,7 +49,7 @@ scene("jogo", () =>{ //Criação do cenário do jogo
         ')':[sprite('tubo-inf-dir'),solid(), scale(0.5)],
         '-':[sprite('tubo-sup-esq'),solid(), scale(0.5)],
         '+':[sprite('tubo-sup-dir'),solid(), scale(0.5)],
-        '^':[sprite('cogumelo-mau'),solid()],
+        '^':[sprite('koopa'),solid()],
         '#':[sprite('cogumelo'),solid()],
     }
 
