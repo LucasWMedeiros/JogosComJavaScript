@@ -32,7 +32,7 @@ loadSprite('tubo-sup-dir', 'hj2GK4n.png')
 loadSprite('tubo-inf-esq', 'c1cYSbt.png')
 loadSprite('tubo-inf-dir', 'nqQ79eI.png')
 
-scene("jogo", () => { //Criação do cenário do jogo
+scene("jogo", ({pontuacao}) => { //Criação do cenário do jogo
     layers(['bg', 'obj', 'ui', 'obs'])
 
     const mapa = [
@@ -154,7 +154,7 @@ scene("jogo", () => { //Criação do cenário do jogo
         jogador.bigify10(10)
     })
 
-    jogador.colliedes('moeda', (m) => {
+    jogador.collides('moeda', (m) => {
         destroy(m)
         pontuacaoLabel.value++
         pontuacaoLabel.text = pontuacaoLabel.value
