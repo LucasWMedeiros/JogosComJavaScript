@@ -36,4 +36,11 @@ scene('jogo', () =>{ //Criação do cenário do jogo
         '                                       ',
         '=======================================',
     ]
+
+    const confNivel = {
+        width:20,
+        height:20,
+
+        '=':[sprite('tijolo'), solid()],
+    }
 })
